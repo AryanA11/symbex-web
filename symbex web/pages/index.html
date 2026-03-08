@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <link rel="stylesheet" href="../css/style.css">
+<body>
+ <header>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="../images/logo2.png" alt="Logo">
+    </div>
+
+    <ul class="nav-links">
+
+      <li><a href="../pages/index.html">Home</a></li>
+
+      <li class="dropdown">
+        <a href="#portfolio">Portfolio</a>
+
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-links" href="http://www.thermech.com/welcome.html" target="_blank" rel="noopener noreferrer">Thermech</a></li>
+          <li><a class="dropdown-links" href="https://www.stainlessmicropolish.com/" target="_blank" rel="noopener noreferrer">Stainless Micro Polish</a></li>
+          <li><a class="dropdown-links" href="http://texloncorp.com/" target="_blank" rel="noopener noreferrer">Texlon</a></li>
+          <li><a class="dropdown-links" href="https://coatedfabrics.com/crystalform" target="_blank" rel="noopener noreferrer">CrystalForm</a></li>
+          <li><a class="dropdown-links" href="https://www.coastpad.com/" target="_blank" rel="noopener noreferrer">CoastPad</a></li>
+          <li><a class="dropdown-links" href="pages/IL.html" target="_blank" rel="noopener noreferrer">Interlayer Technologies</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../pages/about.html">About</a></li>
+      <li><a href="../pages/contact.html">Contact</a></li>
+
+    </ul>
+
+  </nav>
+</header>
+
+    <section class="hero-slideshow">
+  <div class="slideshow-container">
+    <div class="slides">
+      <img src="../images/hero2.png" class="slide" alt="Hero Image 1">
+      <img src="../images/stock 1.jpg" class="slide" alt="Hero Image 2">
+      <img src="../images/stock 2.jpg" class="slide" alt="Hero Image 3">
+      <img src="../images/inter.jpeg" class="slide" alt="Hero Image 4">
+    </div>
+
+    <!-- Arrow Controls -->
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+  </div>
+
+  <div class="hero">
+    <h1><span style="font-family: 'Times New Roman', Times, serif;">SYMBEX</span></h1>
+
+  </div>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slidesContainer = document.querySelector(".slides");
+  const slides = document.querySelectorAll(".slide");
+  const totalSlides = slides.length;
+  const nextBtn = document.querySelector(".arrow.right");
+  const prevBtn = document.querySelector(".arrow.left");
+
+  // Clone first and last slides for seamless looping
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[totalSlides - 1].cloneNode(true);
+  slidesContainer.appendChild(firstClone);
+  slidesContainer.insertBefore(lastClone, slidesContainer.firstChild);
+
+  const allSlides = document.querySelectorAll(".slide");
+  let currentIndex = 1; // Start at first real slide
+
+  function updateSlidePosition(animate = true) {
+    const slideWidth = slidesContainer.clientWidth;
+    if (!animate) slidesContainer.style.transition = "none";
+    else slidesContainer.style.transition = "transform 1s ease-in-out";
+    slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  }
+
+  // Initialize
+  updateSlidePosition(false);
+
+  let interval = setInterval(moveNext, 5000);
+
+  function moveNext() {
+    if (currentIndex >= allSlides.length - 1) return;
+    currentIndex++;
+    updateSlidePosition();
+  }
+
+  function movePrev() {
+    if (currentIndex <= 0) return;
+    currentIndex--;
+    updateSlidePosition();
+  }
+
+  slidesContainer.addEventListener("transitionend", () => {
+    if (allSlides[currentIndex].isEqualNode(firstClone)) {
+      currentIndex = 1;
+      updateSlidePosition(false);
+    } else if (allSlides[currentIndex].isEqualNode(lastClone)) {
+      currentIndex = totalSlides;
+      updateSlidePosition(false);
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    clearInterval(interval);
+    moveNext();
+    interval = setInterval(moveNext, 5000);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    clearInterval(interval);
+    movePrev();
+    interval = setInterval(moveNext, 5000);
+  });
+
+  window.addEventListener("resize", () => {
+    updateSlidePosition(false);
+  });
+});
+</script>
+
+ 
+</body>
+<section class="about-preview">
+<section class="about-preview hidden"></section>
+  <div class="about-container">
+    <h2>About Our Company</h2>
+    <p>Symbex is a private investment and operating company with a singular focus: helping small and mid-sized businesses grow, thrive, and reach their full potential.</p>
+    <a class="about-button" href="../pages/about.html">Learn More</a>
+  </div>
+</section>
+
+<section class="portfolio-preview">
+<section class="portfolio-preview hidden"></section>
+  <div class="portfolio-container">
+    <h2>Our Investment Strategy</h2>
+    <p>Symbex Companies span a range of industries, but they all share a common thread: strong values, loyal customers, and opportunities for meaningful growth. We help these companies become stronger, more resilient, and more impactful over time.</p>
+  </div>
+</section>
+
+
+ 
+
+<section id="portfolio" class="portfolio-section">
+  <div class="portfolio-grid">
+
+
+    
+    <div class="portfolio-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../images/thumbnail_Thermech logo.png" alt="Thermech Logo">
+        </div>
+        <div class="card-back">
+          <h3>Thermech</h3>
+          <p>Thermech specializes in high-performance fluoropolymer coatings, compression molding, and precision machining for mission-critical applications in aerospace, medical, food, chemical, and specialized commercial industries.
+            Its proprietary PTFE and fluoropolymer blends deliver exceptional chemical resistance, durability, and non-stick properties for components in harsh operating environments.</p>
+       <a href="http://www.thermech.com/welcome.html" target="_blank" rel="noopener noreferrer" class="learn-more-btn"><strong>Learn More</strong></a>
+          </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../images/thumbnail_Coated Fabris logo.png" alt="Stainless Micro Polish Logo">
+        </div>
+        <div class="card-back">
+          <h3>Coated Fabrics</h3>
+          <p>Coated Fabrics Co. (CFC) is a trusted leader in the supply, distribution, and converting of plastic film and sheet products. 
+            We offer a wide range of materials, including APET, PVC, Flexible PVC, HDPE, PP, EVA, and other specialty polymers.  Our core markets include Packaging, Print, Stationery, and Dental applications.  With over 50 years of industry expertise and a robust distribution network spanning the U.S., Mexico, and Canada, CFC delivers reliable, efficient solutions tailored to meet your supply chain needs.
+            sterile, high-performance applications in medical, aerospace, and semiconductor industries.</p>
+        <a href="https://coatedfabrics.com/crystalform"  target="_blank" rel="noopener noreferrer" class="learn-more-btn-bl"><strong>Learn More</strong></a>
+          </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../images/thumbnail_Texlon.png" alt="Stainless Micro Polish Logo">
+        </div>
+        <div class="card-back">
+          <h3>Texlon</h3>
+          <p>Texlon is a leading industrial textile finisher specializing in coating, calendering, and slitting woven fabrics. 
+            From advanced toll coating services to complete finished products, Texlon delivers high-performance technical textiles for aerospace, filtration, light diffusion, sailcloth, and specialty industrial applications.</p>
+        <a href="http://texloncorp.com/"  target="_blank" rel="noopener noreferrer" class="learn-more-btn-gr"><strong>Learn More</strong></a>
+          </div>
+      </div>
+    </div>
+
+     <div class="portfolio-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../images/Stainless micro polish logo.png" alt="Stainless Micro Polish Logo">
+        </div>
+        <div class="card-back">
+          <h3>Stainless Micro Polish</h3>
+          <p>SMP specializes in precision surface treatments for stainless steel—pickling, passivation, and polishing—including the ability to finish narrow inside diameters of medical-grade tubing. 
+            Our processes enhance corrosion resistance, cleanliness, and micro-smooth finishes essential for sterile, high-performance applications in medical, aerospace, and semiconductor industries.</p>
+         <a href="https://www.stainlessmicropolish.com/"  target="_blank" rel="noopener noreferrer" class="learn-more-btn"><strong>Learn More</strong></a>
+          </div>
+      </div>
+    </div>
+
+     <div class="portfolio-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../images/Crystal Form logo.png" alt="Stainless Micro Polish Logo">
+        </div>
+        <div class="card-back">
+          <h3>CrystalForm</h3>
+          <p>CrystalForm is a leading provider of plastic film and sheet for the packaging industry specifically focused on Visual Packaging applications such as Thermoforms, Folded Boxes, and Print Substrates.   With a full line of APET, Rigid PVC, and PETG materials, we supply the material for your packaging applications.
+             With over 50 years of technical experience and distribution channels throughout the US, Mexico, and Canada, CF provides Vendor Managed Solutions to your supply chain contributing to your lean manufacturing initiatives. </p>
+         <a href="https://coatedfabrics.com/crystalform"  target="_blank" rel="noopener noreferrer" class="learn-more-btn-bl"><strong>Learn More</strong></a>
+          </div>
+      </div>
+    </div>
+
+     <div class="portfolio-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../images/coastpad2.png" alt="Stainless Micro Polish Logo">
+        </div>
+        <div class="card-back">
+          <h3>CoastPad</h3>
+          <p>Since 1984, CoastPad has been a domestic leader in bra cup manufacturing for swimwear, lingerie, and active wear. Our overseas partner has 1,000+ molding machines with a capacity of over 10,000 pairs per month.  
+            CoastPad stocks hundreds of styles in California and Asia, and collaborates with customers to innovate new materials and designs for superior fit and performance.</p>
+         <a href="https://www.coastpad.com/"  target="_blank" rel="noopener noreferrer" class="learn-more-btn-pi"><strong>Learn More</strong></a>
+          </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../images/Interlayer logo.png" alt="Stainless Micro Polish Logo">
+        </div>
+        <div class="card-back">
+          <h3>Interlayer Technologies</h3>
+          <p>Interlayer specializes in plasma-enhanced vapor deposition (PECVD) coatings for medical devices and diagnostic consumables.
+            Our advanced surface modification technologies improve lubricity, hydrophilicity, and antimicrobial performance—enabling safer, more reliable, and higher-value products for MedTech and IVD applications worldwide.</p>
+         <a href="https://www.interlayertechnologies.com/"  target="_blank" rel="noopener noreferrer" class="learn-more-btn-gr"><strong>Learn More</strong></a>
+          </div>
+      </div>
+    </div>
+                    
+
+
+  
+  </div>
+</section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="../images/logo2.png" alt="Company Logo">
+      </div>
+      <div class="footer-info">
+        <p>12658 Cisneros Lane, Santa Fe Springs, CA  90670</p>
+        <p>Phone: (562) 298-1300</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/yourcompany" target="_blank">Instagram</a>
+        <a href="https://linkedin.com/company/yourcompany" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Symbex. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script src="js/script.js"></script>
+</body>
+
+
+</html>
